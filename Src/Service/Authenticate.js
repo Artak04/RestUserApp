@@ -22,8 +22,9 @@ export const createUser = async function (data) {
     newUser.email = email
     newUser.password = hashPass
     await newUser.save()
+
     return { message: 'you are succesfully registred' }
-}
+};
 
 
 
@@ -41,8 +42,9 @@ export const logUser = async function (data) {
     }
 
     const token = await jwt.sign({ id: user._id }, process.env.tokenSecret)
+
     return { message: token }
-}
+};
 
 
 
@@ -57,13 +59,15 @@ export const updateProfile = async function (data) {
     }
 
     const updateUser = await Users.findOneAndUpdate({ _id: user.id }, { $set: { name, lastName, new: true } })
+
     return { message: updateUser }
-}
+};
 
 
 export const getProfile = async function (data) {
     const token = await jwt.decode(data.headers['auth-token'])
     const user = await Users.findOne({ _id: token.id })
+
     return {
         message: {
             name:user.name,
@@ -71,4 +75,4 @@ export const getProfile = async function (data) {
             email:user.email
         }
     }
-}
+};
