@@ -21,17 +21,10 @@ const users = new schema({
         type: String,
         require: true
     },
-    avatar: {
-        type: String,
-    },
-    createdAt: {
-        type: String,
-    },
-    updatedAt: {
-        type: String,
-    }
+},
+    { timestamps: true }
 
-});
+);
 
 
-export default  mongoose.model('users',users)
+export default mongoose.model('users', users)
