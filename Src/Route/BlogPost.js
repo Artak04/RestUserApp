@@ -7,13 +7,13 @@ import {accesAuthor} from "../Middleware/AccesAuthor.js"
 const router = express.Router()
 
 
-router.use('/Api/MyPosts',authenticateUser)
+router.use('/api/myPosts',authenticateUser)
 
-router.get('/Api/Posts',getAllPosts)
-router.get('/Api/MyPosts', getUserPosts)
-router.post('/Api/NewPost',validationPost, blogPost)
-router.put('/Api/MyPosts/:id',accesAuthor, updatePost)
-router.delete('/Api/MyPosts/:id',accesAuthor,deletePost)
+router.get('/api/posts',getAllPosts)
+router.get('/api/myPosts', getUserPosts)
+router.post('/api/newPost',validationPost, blogPost)
+router.put('/api/myPosts/:id',accesAuthor, updatePost)
+router.delete('/api/myPosts/:id',accesAuthor,deletePost)
 
 
 export default router

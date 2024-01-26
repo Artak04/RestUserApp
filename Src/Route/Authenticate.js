@@ -6,10 +6,10 @@ import { authenticateUser } from "../Middleware/Authenticate.js"
 
 const router = express.Router()
 
-router.get('/Api/Profile',authenticateUser,getUser)
-router.post('/Api/Register', userRegisterValidation, registerUser)
-router.post('/Api/Login',loginUser)
-router.patch('/Api/Profile',authenticateUser,validationUpdate, updateUser)
+router.get('/api/profile',authenticateUser,getUser)
+router.post('/api/register', userRegisterValidation, registerUser)
+router.post('/api/login',loginUser)
+router.patch('/api/profile',authenticateUser,validationUpdate, updateUser)
 
 
 

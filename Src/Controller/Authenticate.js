@@ -9,7 +9,7 @@ export const registerUser = async function (req, res) {
 
 export const loginUser = async function (req, res) {
    const login = await logUser(req)
-   res.json(login.message)
+   res.json(login)
 };
 
 

@@ -43,7 +43,7 @@ export const logUser = async function (data) {
 
     const token = await jwt.sign({ id: user._id }, process.env.tokenSecret)
 
-    return { message: token }
+    return { token: token }
 };
 
 
