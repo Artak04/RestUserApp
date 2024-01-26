@@ -40,10 +40,10 @@ export const postDelete = async function (data) {
 
     return { message: 'your post deleted' }
 
-}
+};
 
 
 export const allPosts = async function () {
     const posts = await Post.find()
     return { message: posts }
-}
+};
