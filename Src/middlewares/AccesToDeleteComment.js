@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-import Comments from "../Model/Comments.js"
+import Comments from "../models/Comments.js"
 
 export const accesToRemoveComment = async function (req, res, next) {
     const user = await jwt.decode(req.headers['auth-token'])

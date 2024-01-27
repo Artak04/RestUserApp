@@ -1,5 +1,5 @@
-import { createComment } from "../Service/Comments.js"
-import { removeComment } from "../Service/Comments.js"
+import { createComment } from "../services/Comments.js"
+import { removeComment } from "../services/Comments.js"
 
 export const addComment = async function (req,res){
     const newComment = await createComment(req)

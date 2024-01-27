@@ -1,7 +1,7 @@
 import express from "express"
-import { authenticateUser } from "../Middleware/Authenticate.js"
-import { addComment,deleteComment } from "../Controller/Comments.js"
-import { accesToRemoveComment } from "../Middleware/AccesToDeleteComment.js"
+import { authenticateUser } from "../middlewares/Authenticate.js"
+import { addComment,deleteComment } from "../controllers/Comments.js"
+import { accesToRemoveComment } from "../middlewares/AccesToDeleteComment.js"
 
 const router = express.Router()
 

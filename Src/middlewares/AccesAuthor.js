@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-import Post from "../Model/BlogPost.js"
+import Post from "../models/BlogPost.js"
 
 export const accesAuthor = async function (req, res, next) {
     const token = await jwt.decode(req.headers['auth-token'])

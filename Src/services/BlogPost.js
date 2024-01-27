@@ -1,6 +1,6 @@
-import Post from "../Model/BlogPost.js"
+import Post from "../models/BlogPost.js"
 import jwt from "jsonwebtoken"
-import Comments from "../Model/Comments.js";
+import Comments from "../models/Comments.js";
 
 export const createPost = async function (data) {
     const { title, body } = data.body

@@ -1,4 +1,4 @@
-import Users from "../Model/Users.js";
+import Users from "../models/Users.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
@@ -70,9 +70,9 @@ export const getProfile = async function (data) {
 
     return {
         message: {
-            name:user.name,
-            lastName:user.lastName,
-            email:user.email
+            name: user.name,
+            lastName: user.lastName,
+            email: user.email
         }
     }
 };

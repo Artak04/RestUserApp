@@ -1,9 +1,9 @@
 import { } from "dotenv/config"
 import express from "express"
 import mongoose from "mongoose"
-import routeAuthenticate from "./Src/Route/Authenticate.js"
-import routeBlogPost from "./Src/Route/BlogPost.js"
-import routeComment from "./Src/Route/Comments.js"
+import routeAuthenticate from "./Src/routes/Authenticate.js"
+import routeBlogPost from "./Src/routes/BlogPost.js"
+import routeComment from "./Src/routes/Comments.js"
 
 const app = express()
 

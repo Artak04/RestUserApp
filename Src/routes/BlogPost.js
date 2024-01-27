@@ -1,8 +1,8 @@
 import express from "express"
-import { authenticateUser } from "../Middleware/Authenticate.js"
-import { blogPost, updatePost, getUserPosts,deletePost,getAllPosts } from "../Controller/BlogPost.js"
-import {validationPost  } from "../Middleware/Validation/userPostsValidation.js"
-import {accesAuthor} from "../Middleware/AccesAuthor.js"
+import { authenticateUser } from "../middlewares/Authenticate.js"
+import { blogPost, updatePost, getUserPosts,deletePost,getAllPosts } from "../controllers/BlogPost.js"
+import {validationPost  } from "../middlewares/validations/userPostsValidation.js"
+import {accesAuthor} from "../middlewares/AccesAuthor.js"
 
 const router = express.Router()
 

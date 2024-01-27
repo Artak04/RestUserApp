@@ -1,4 +1,4 @@
-import Comments from "../Model/Comments.js";
+import Comments from "../models/Comments.js";
 import jwt from "jsonwebtoken"
 
 

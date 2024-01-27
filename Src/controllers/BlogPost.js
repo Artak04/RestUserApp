@@ -1,4 +1,4 @@
-import { createPost, updatePosts, getPosts, postDelete, allPosts } from "../Service/BlogPost.js"
+import { createPost, updatePosts, getPosts, postDelete, allPosts } from "../services/BlogPost.js"
 
 export const blogPost = async function (req, res) {
     const newPost = await createPost(req)

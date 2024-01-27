@@ -1,4 +1,4 @@
-import { createUser, logUser, updateProfile, getProfile } from "../Service/Authenticate.js"
+import { createUser, logUser, updateProfile, getProfile } from "../services/Authenticate.js"
 
 
 export const registerUser = async function (req, res) {
