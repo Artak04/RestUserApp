@@ -1,5 +1,6 @@
 import Post from "../Model/BlogPost.js"
 import jwt from "jsonwebtoken"
+import Comments from "../Model/Comments.js";
 
 export const createPost = async function (data) {
     const { title, body } = data.body
@@ -37,6 +38,8 @@ export const getPosts = async function (data) {
 export const postDelete = async function (data) {
     const { id } = data.params
     await Post.findByIdAndDelete(id)
+    const comment = await Comments.findOne({postId:id})
+    await Comments.findByIdAndDelete(comment)
 
     return { message: 'your post deleted' }
 
