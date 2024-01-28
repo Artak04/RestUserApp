@@ -6,11 +6,11 @@ export const accesAuthor = async function (req, res, next) {
     const post = await Post.findOne({ _id: req.params.id })
 
     if (!post) {
-        return res.json({ message: "does not exist" })
+        return res.status(404).send({ message: "Post not found" })
     }
 
     if (token.id !== post.author) {
-        return res.json({ message: "token invalid" })
+        return res.status(403).send({ message: "Token is invalid for this operation" })
     }
 
     next()

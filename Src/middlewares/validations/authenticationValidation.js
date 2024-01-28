@@ -14,7 +14,7 @@ async function checkPassword(data, res) {
     const checkNameInPassword = lowerPassword.includes(lowerName)
     const checkLastNameInPassword = lowerPassword.includes(lowerLastName)
     if (checkNameInPassword || checkLastNameInPassword) {
-        return res.json({ message: "Name or Last Name should not be part of the password" })
+        return res.status(400).send({ message: "Name or Last Name should not be part of the password" })
     }
 };
 
@@ -27,7 +27,7 @@ export const userRegisterValidation = async function (req, res, next) {
         await checkPassword(req.body, res)
         next()
     } catch (error) {
-        return res.json({ message: "validation failed" })
+        return res.status(400).send({ message: "Invalid name,  lastName or email" })
     }
 };
 
@@ -48,6 +48,6 @@ export const validationUpdate = async function (req, res, next) {
         await schemaUpdate.validateAsync(req.body)
         next()
     } catch (error) {
-        return res.json({ message: "validation failed" })
+        return res.status(400).send({ message: "Invalid name,lastName or password" })
     }
 };

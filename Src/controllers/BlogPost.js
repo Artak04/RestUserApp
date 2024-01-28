@@ -2,29 +2,29 @@ import { createPost, updatePosts, getPosts, postDelete, allPosts } from "../serv
 
 export const blogPost = async function (req, res) {
     const newPost = await createPost(req)
-    res.json(newPost.message)
+    res.status(newPost.status).send(newPost.messages)
 };
 
 
 export const updatePost = async function (req, res) {
     const update = await updatePosts(req)
-    res.json(update.message)
+    res.status(update.status).send(update.messages)
 };
 
 
 export const getUserPosts = async function (req, res) {
     const posts = await getPosts(req)
-    res.json(posts.message)
+    res.status(posts.status).send(posts.messages)
 };
 
 export const deletePost = async function (req, res) {
     const userPostDelete = await postDelete(req)
-    res.json(userPostDelete.message)
+    res.status(userPostDelete.status).send(userPostDelete.messages)
 
 };
 
 
 export const getAllPosts = async function (req, res) {
     const posts = await allPosts()
-    res.json(posts.message)
+    res.status(posts.status).send(posts.messages)
 };

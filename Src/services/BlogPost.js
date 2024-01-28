@@ -2,6 +2,7 @@ import Post from "../models/BlogPost.js"
 import jwt from "jsonwebtoken"
 import Comments from "../models/Comments.js";
 
+
 export const createPost = async function (data) {
     const { title, body } = data.body
     const user = await jwt.decode(data.headers['auth-token'])
@@ -12,7 +13,7 @@ export const createPost = async function (data) {
         newPost.author = user.id
     await newPost.save()
 
-    return { message: 'Your post added' }
+    return { messages: { post: newPost }, status: 200 }
 };
 
 
@@ -20,7 +21,7 @@ export const updatePosts = async function (data) {
     const { title, body } = data.body
     const updatePost = await Post.findOneAndUpdate({ _id: data.params.id }, { $set: { title, body, new: true } })
 
-    return { message: updatePost }
+    return { messages: { post: updatePost }, status: 200 }
 };
 
 
@@ -29,24 +30,24 @@ export const getPosts = async function (data) {
     const allPosts = await Post.find({ author: token.id })
 
     if (!allPosts) {
-        return { message: 'you have not got posts' }
+        return { messages: { message: 'you have not got posts' }, status: 404 }
     }
 
-    return { message: allPosts }
+    return { messages: { message: allPosts }, status: 200 }
 };
 
 export const postDelete = async function (data) {
     const { id } = data.params
     await Post.findByIdAndDelete(id)
-    const comment = await Comments.findOne({postId:id})
+    const comment = await Comments.findOne({ postId: id })
     await Comments.findByIdAndDelete(comment)
 
-    return { message: 'your post deleted' }
+    return { messages: { message: 'removed' }, status: 200 }
 
 };
 
 
 export const allPosts = async function () {
     const posts = await Post.find()
-    return { message: posts }
+    return { messages: { posts }, status: 200 }
 };

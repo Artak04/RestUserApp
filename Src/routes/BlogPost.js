@@ -11,7 +11,7 @@ router.use('/api/myPosts',authenticateUser)
 
 router.get('/api/posts',getAllPosts)
 router.get('/api/myPosts', getUserPosts)
-router.post('/api/newPost',validationPost, blogPost)
+router.post('/api/newPost',authenticateUser,validationPost, blogPost)
 router.put('/api/myPosts/:id',accesAuthor, updatePost)
 router.delete('/api/myPosts/:id',accesAuthor,deletePost)
 

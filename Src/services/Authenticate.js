@@ -10,7 +10,7 @@ export const createUser = async function (data) {
     const user = await Users.findOne({ email })
 
     if (user) {
-        return { message: "you are already registred" }
+        return { messages: { message: "User already exists" }, status: 409 }
     }
 
     const salt = await bcrypt.genSalt(10)
@@ -23,7 +23,7 @@ export const createUser = async function (data) {
     newUser.password = hashPass
     await newUser.save()
 
-    return { message: 'you are succesfully registred' }
+    return { messages: { user: newUser }, status: 200 }
 };
 
 
@@ -33,17 +33,17 @@ export const logUser = async function (data) {
 
     const user = await Users.findOne({ email })
     if (!user) {
-        return { message: "unauthorized" }
+        return { messages: { message: "Unauthorized" }, status: 401 }
     }
 
-    const comparePassword = await bcrypt.compare(password, user.password)
-    if (!comparePassword) {
-        return { message: "failed password" }
+    const isPasswordValid = await bcrypt.compare(password, user.password)
+    if (!isPasswordValid) {
+        return { messages: { message: "failed password" }, status: 401 }
     }
 
     const token = await jwt.sign({ id: user._id }, process.env.tokenSecret)
 
-    return { token: token }
+    return { messages: { token }, status: 200 }
 };
 
 
@@ -60,7 +60,7 @@ export const updateProfile = async function (data) {
 
     const updateUser = await Users.findOneAndUpdate({ _id: user.id }, { $set: { name, lastName, new: true } })
 
-    return { message: updateUser }
+    return { messages: { user: updateUser }, status: 200 }
 };
 
 
@@ -69,10 +69,13 @@ export const getProfile = async function (data) {
     const user = await Users.findOne({ _id: token.id })
 
     return {
-        message: {
-            name: user.name,
-            lastName: user.lastName,
-            email: user.email
-        }
+        messages: {
+            message: {
+                name: user.name,
+                lastName: user.lastName,
+                email: user.email
+            }
+        },
+        status: 200
     }
 };

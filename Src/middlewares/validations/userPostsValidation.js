@@ -12,6 +12,6 @@ export const validationPost = async function (req, res, next) {
         await schema.validateAsync(req.body)
         next()
     } catch (error) {
-        return res.json({ message: 'required failed' })
+        return res.status(400).send({ message: 'Invalid title or body' })
     }
 }

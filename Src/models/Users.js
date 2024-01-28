@@ -20,7 +20,7 @@ const users = new schema({
     password: {
         type: String,
         require: true
-    },
+    }
 },
     { timestamps: true }
 

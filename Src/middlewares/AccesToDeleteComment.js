@@ -6,11 +6,11 @@ export const accesToRemoveComment = async function (req, res, next) {
     const comment = await Comments.findOne({ _id: req.params.commentId })
 
     if (!comment) {
-        return res.json({ message: "does not exist comment" })
+        return res.status(404).send({ message: "Comment not found" })
     }
 
     if (user.id !== comment.author) {
-        return res.json({ message: "token invalid" })
+        return res.status(403).send({ message: "Token is invalid for this operation" })
     }
 
     next()
